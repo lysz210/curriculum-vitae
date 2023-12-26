@@ -3,12 +3,12 @@
     <h1>{{ $t('lavoro.title') }}</h1>
     <dl>
       <template v-for="(esperienza, esperienzaKey) in $tm('lavoro.esperienze')">
-        <dt>{{ $t(`lavoro.esperienze.${esperienzaKey}`) }}</dt>
+        <dt>{{ $t(`lavoro.esperienze.${esperienzaKey}.periodo`) }}</dt>
         <dd>
           <h2 v-html="$t(`lavoro.esperienze.${esperienzaKey}.ruolo`)"></h2>
           <p v-html="$t(`lavoro.esperienze.${esperienzaKey}.azienda`)"></p>
           <ul v-if="esperienza.attivita">
-            <li v-for="(_, attivitaKey) in $tm(`lavoro.esperienze.${esperienzaKey}.attivita`)">
+            <li v-for="(_attivita, attivitaKey) in $tm(`lavoro.esperienze.${esperienzaKey}.attivita`)">
               {{ $t(`lavoro.esperienze.${esperienzaKey}.attivita.${attivitaKey}`) }}
             </li>
           </ul>
@@ -17,5 +17,6 @@
           </p>
         </dd>
       </template>
-    </dl>@endforeach
+    </dl>
   </section>
+</template>
