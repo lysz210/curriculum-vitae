@@ -20,3 +20,11 @@
     </dl>
   </section>
 </template>
+
+<script setup>
+defineI18nRoute({
+  paths: {
+    it: 'esperienze-lavorative'
+  }
+})
+</script>

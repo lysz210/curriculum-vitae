@@ -7,12 +7,16 @@ export default defineNuxtConfig({
   i18n: {
     lazy: true,
     langDir: 'lang',
-    defaultLocale: 'en',
+    customRoutes: 'page',
     locales: [
-      { code: 'en', file: 'en.yaml'}
+      { code: 'en', file: 'en.yaml'},
+      { code: 'it', file: 'it.yaml'}
     ],
+    strategy: 'prefix',
+    defaultLocale: 'en',
     compilation: {
       strictMessage: false
-    }
+    },
+    vueI18n: 'vue-i18n.config.ts'
   }
 })

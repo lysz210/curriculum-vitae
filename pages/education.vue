@@ -14,3 +14,11 @@
     </dl>
   </section>
 </template>
+
+<script setup>
+defineI18nRoute({
+  paths: {
+    it: '/istruzione-formazione'
+  }
+})
+</script>
