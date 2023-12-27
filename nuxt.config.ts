@@ -9,8 +9,8 @@ export default defineNuxtConfig({
     langDir: 'lang',
     customRoutes: 'page',
     locales: [
-      { code: 'en', file: 'en.yaml'},
-      { code: 'it', file: 'it.yaml'}
+      { code: 'en', name: 'English', file: 'en.yaml'},
+      { code: 'it', name: 'Italiano', file: 'it.yaml'}
     ],
     strategy: 'prefix',
     defaultLocale: 'en',

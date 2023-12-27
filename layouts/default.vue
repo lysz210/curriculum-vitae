@@ -41,5 +41,15 @@
         </dd> -->
     </dl>
   </section>
+
+  <AppLanguageSwitcher /> -
+
+  <NuxtLink :to="localPath({ name: 'education' })">{{ $t('istruzione.title') }}</NuxtLink> -
+  <NuxtLink :to="localPath({ name: 'experience' })">{{ $t('lavoro.title') }}</NuxtLink> -
+  <NuxtLink :to="localPath({ name: 'personal-skills' })">{{ $t('competenze.title') }}</NuxtLink>
   <slot></slot>
 </template>
+
+<script setup>
+const localPath = useLocalePath()
+</script>

@@ -79,7 +79,7 @@
 <script setup>
 defineI18nRoute({
   paths: {
-    it: 'competenze'
+    it: '/competenze'
   }
 })
 </script>
