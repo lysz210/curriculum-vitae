@@ -13,7 +13,12 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0",
     "nuxt": "^3.8.2",
+    "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.3.12",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.4.9"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47"
   }
 }
