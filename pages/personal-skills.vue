@@ -13,7 +13,7 @@
         {{ $t('competenze.lingue.altre.title') }}
       </dt>
       <dd>
-        <table>
+        <v-table>
           <thead>
             <tr>
               <th> </th>
@@ -35,7 +35,7 @@
               <td colspan="6" v-html="$t('competenze.lingue.altre.footer')"></td>
             </tr>
           </tfoot>
-        </table>
+        </v-table>
       </dd>
 
       <dt>
