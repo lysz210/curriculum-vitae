@@ -13,8 +13,8 @@
             </v-card>
           </template>
           <v-card>
-            <v-card-title v-html="$t(`lavoro.esperienze.${esperienzaKey}.ruolo`)"></v-card-title>
-            <v-card-subtitle v-html="$t(`lavoro.esperienze.${esperienzaKey}.azienda`)"></v-card-subtitle>
+            <v-card-title v-html="mdT(`lavoro.esperienze.${esperienzaKey}.ruolo`)"></v-card-title>
+            <v-card-subtitle v-html="mdT(`lavoro.esperienze.${esperienzaKey}.azienda`)"></v-card-subtitle>
             <v-card-text>
               <p class="settore">
                 {{ $t(`lavoro.esperienze.${esperienzaKey}.settore`) }}
@@ -37,9 +37,16 @@
 </template>
 
 <script setup>
+import { micromark } from 'micromark'
+const { t } = useI18n()
 defineI18nRoute({
   paths: {
     it: '/esperienze-lavorative'
   }
 })
+function mdT(key) {
+  return micromark(t(key), {
+    allowDangerousHtml: true
+  })
+}
 </script>
