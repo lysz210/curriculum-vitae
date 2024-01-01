@@ -1,18 +1,15 @@
 <template>
-  <section id="istruzione_formazione">
-    <h1>{{ $t('istruzione.title') }}</h1>
-    <dl>
-      <template v-for="(istruzione, istruzioneKey) in $tm('istruzione.corsi')">
-        <dt>
-            {{ $t(`istruzione.corsi.${istruzioneKey}.periodo`) }}
-        </dt>
-        <dd>
-          <p v-html="$t(`istruzione.corsi.${istruzioneKey}.istituto`)"></p>
-          <p v-html="$t(`istruzione.corsi.${istruzioneKey}.corso`)"></p>
-        </dd>
-      </template>
-    </dl>
-  </section>
+  <v-card id="istruzione_formazione">
+    <v-card-text>
+      <v-list>
+        <v-list-item v-for="(_istruzione, istruzioneKey) in $tm('istruzione.corsi')" :key="istruzioneKey">
+          <v-list-item-title v-html="$t(`istruzione.corsi.${istruzioneKey}.istituto`)"></v-list-item-title>
+          <v-list-item-subtitle>{{ $t(`istruzione.corsi.${istruzioneKey}.periodo`) }}</v-list-item-subtitle>
+          <div v-html="$t(`istruzione.corsi.${istruzioneKey}.corso`)"></div>
+        </v-list-item>
+      </v-list>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script setup>
