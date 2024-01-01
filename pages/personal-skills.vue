@@ -1,18 +1,18 @@
 <template>
-  <section id="competenze-personali">
-    <h1>{{ $t('competenze.title') }}</h1>
-    <dl>
-      <dt>
+  <v-sheet id="competenze-personali">
+    <v-card>
+      <v-card-subtitle>
         {{ $t('competenze.lingue.madre.title') }}
-      </dt>
-      <dd>
+      </v-card-subtitle>
+      <v-card-title>
         {{ $t('competenze.lingue.madre.content') }}
-      </dd>
-
-      <dt>
+      </v-card-title>
+    </v-card>
+    <v-card>
+      <v-card-subtitle>
         {{ $t('competenze.lingue.altre.title') }}
-      </dt>
-      <dd>
+      </v-card-subtitle>
+      <v-card-text>
         <v-table>
           <thead>
             <tr>
@@ -36,44 +36,54 @@
             </tr>
           </tfoot>
         </v-table>
-      </dd>
+      </v-card-text>
 
-      <dt>
+    </v-card>
+    <v-card>
+      <v-card-subtitle>
         {{ $t('competenze.informatiche.title') }}
-      </dt>
-      <dd>
-        <ul>
-          <li v-for="(competenza, key) in $tm('competenze.informatiche.list')">
-            <div v-if="competenza.title">
-              {{ $t(`competenze.informatiche.list.${key}.title`) }}
-              <ul v-if="competenza.content">
-                <li v-for="(skill, skillKey) in $tm(`competenze.informatiche.list.${key}.content`)">
-                  <div v-if="skill.title">
-                    {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.title`) }}
-                    <ul v-if="skill.content">
-                      <li
-                        v-for="(_, contentKey) in $tm(`competenze.informatiche.list.${key}.content.${skillKey}.content`)">
-                        {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.content.${contentKey}`) }}
-                      </li>
-                    </ul>
-                  </div>
-                  <span v-else>{{ $t(`competenze.informatiche.list.${key}.content.${skillKey}`) }}</span>
-                </li>
-              </ul>
-            </div>
-            <span v-else>{{ $t(`competenze.informatiche.list.${key}`) }}</span>
-          </li>
-        </ul>
-      </dd>
+      </v-card-subtitle>
+      <v-card-text>
+        <v-expansion-panels variant="accordion" multiple>
+          <v-expansion-panel v-for="(competenza, key) in $tm('competenze.informatiche.list')">
+            <template v-if="competenza.title">
+              <v-expansion-panel-title>
+                {{ $t(`competenze.informatiche.list.${key}.title`) }}
+              </v-expansion-panel-title>
+              <v-expansion-panel-text>
+                <v-list v-if="competenza.content" density="compact">
+                  <v-list-item v-for="(skill, skillKey) in $tm(`competenze.informatiche.list.${key}.content`)">
+                    <template v-if="skill.title">
+                      <v-list-item-title>
+                        {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.title`) }}
+                      </v-list-item-title>
+                      <v-list-item-subtitle v-if="skill.content">
+                        <span v-for="(_, contentKey) in $tm(`competenze.informatiche.list.${key}.content.${skillKey}.content`)" class="sub-skill">
+                          {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.content.${contentKey}`) }}
+                        </span>
+                      </v-list-item-subtitle>
+                    </template>
+                    <v-list-item-title v-else>{{ $t(`competenze.informatiche.list.${key}.content.${skillKey}`) }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-expansion-panel-text>
+            </template>
+            <v-expansion-panel-title v-else>{{ $t(`competenze.informatiche.list.${key}`) }}</v-expansion-panel-title>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-card-text>
+    </v-card>
 
-      <dt>
+    <v-card>
+      <v-card-subtitle>
         {{ $t('competenze.patente.title') }}
-      </dt>
-      <dd>
+      </v-card-subtitle>
+      <v-card-title>
         {{ $t('competenze.patente.content') }}
-      </dd>
-    </dl>
-  </section>
+      </v-card-title>
+    </v-card>
+      
+  </v-sheet>
 </template>
 
 <script setup>
@@ -83,3 +93,12 @@ defineI18nRoute({
   }
 })
 </script>
+
+<style>
+.sub-skill::after {
+  content: ' - ';
+}
+.sub-skill:last-child::after {
+  content: none;
+}
+</style>
