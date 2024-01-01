@@ -19,6 +19,7 @@
     "vuetify": "^3.4.9"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47"
+    "@mdi/font": "^7.4.47",
+    "micromark": "^4.0.0"
   }
 }
