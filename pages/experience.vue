@@ -5,7 +5,7 @@
         side="end"
       >
         <v-timeline-item dot-color="blue" v-for="(esperienza, esperienzaKey) in $tm('lavoro.esperienze')">
-          <template v-slot:opposite>
+          <template v-slot:opposite v-if="!mobile">
             <v-card variant="flat">
               <v-card-subtitle>
                 {{ $t(`lavoro.esperienze.${esperienzaKey}.periodo`) }}
@@ -13,6 +13,9 @@
             </v-card>
           </template>
           <v-card>
+            <v-card-subtitle v-if="mobile">
+                {{ $t(`lavoro.esperienze.${esperienzaKey}.periodo`) }}
+            </v-card-subtitle>
             <v-card-title v-html="mdT(`lavoro.esperienze.${esperienzaKey}.ruolo`)"></v-card-title>
             <v-card-subtitle v-html="mdT(`lavoro.esperienze.${esperienzaKey}.azienda`)"></v-card-subtitle>
             <v-card-text>
@@ -38,6 +41,8 @@
 
 <script setup>
 import { micromark } from 'micromark'
+import { useDisplay } from 'vuetify/lib/framework.mjs';
+const { mobile } = useDisplay()
 const { t } = useI18n()
 defineI18nRoute({
   paths: {
