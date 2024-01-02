@@ -77,7 +77,7 @@ lavoro:
     interlogica:
       periodo: "Current occupation since December 2021"
       ruolo: "Java Backend developer"
-      azienda: <a href="https://www.interlogica.it/about/" alt="link to Interlogica homepage" target="blank">Interlogica Srl</a>, Via Miranese, 91, 30174 Venezia VE
+      azienda: <a href="https://www.interlogica.it/en/about/" alt="link to Interlogica homepage" target="blank">Interlogica Srl</a>, Via Miranese, 91, 30174 Venezia VE
       attivita: 
       - "Backend developer for Unipol Rental"
       settore: "Information Tecnology"
@@ -109,7 +109,7 @@ lavoro:
     mc:
       periodo: "From 2002 to 2004"
       ruolo: Adetto generico
-      azienda: <a href="http://www.caribesrl.com/index.html" alt="link to Caribe srl homepage" target="blank">Caribe s.r.l.</a>, McDonald\'s in franchising, calle Larga San Marco Venezia
+      azienda: <a href="http://www.caribesrl.com/index.html" alt="link to Caribe srl homepage" target="blank">Caribe s.r.l.</a>, McDonald's in franchising, calle Larga San Marco Venezia
       settore: "Ristorazione fast-food"
     famiglia:
       periodo: "From 1996 to 2002"
@@ -121,8 +121,8 @@ istruzione:
   corsi:
     unive:
       periodo: "September 2013 – in progress..."
-      istituto: <a href="https://www.unive.it" alt="link to Ca Foscari university homepage" target="blank">Ca Foscari</a>
-      corso: <a href="https://unive.it/cdl/ct3" alt="link al corso di laurea triennale dell'università Ca Foscari" target="blank">Corso di laurea triennale in informatica</a>
+      istituto: <a href="https://www.unive.it/english" alt="link to Ca Foscari university homepage" target="blank">Ca Foscari</a>
+      corso: <a href="https://www.unive.it/degree/ct3" alt="link al corso di laurea triennale dell'università Ca Foscari" target="blank">Corso di laurea triennale in informatica</a>
     zuccante:
       periodo: "October 2009 – June 2013"
       istituto: <a href="https://www.zuccante.it" alt="link to Zuccante institute in Mestre" target="blank">Itis C. Zuccante</a>
