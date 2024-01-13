@@ -49,6 +49,36 @@ glob.sync('**/*', {
     })
 })
 
+// create server lambda
+const lambdaServer = new aws.lambda.Function("apiCvLysz210", {
+    role: 'arn:aws:iam::843380199157:role/service-role/lambda_basic_execution',
+    handler: 'index.handler',
+    runtime: 'nodejs18.x',
+    code: new pulumi.asset.AssetArchive({
+        '.': new pulumi.asset.FileArchive('../.output/server')
+    })
+})
+// create lambda url
+const lambdaServerUrl = new aws.lambda.FunctionUrl("apiCvLysz210Url", {
+    functionName: lambdaServer.arn,
+    authorizationType: "NONE",
+    cors: {
+        allowCredentials: true,
+        allowOrigins: ["*"],
+        allowMethods: ["*"],
+        allowHeaders: [
+            "date",
+            "keep-alive",
+        ],
+        exposeHeaders: [
+            "keep-alive",
+            "date",
+        ],
+        maxAge: 86400,
+    }
+})
+
 // Export the name of the bucket
 export const bucketName = bucket.id;
 export const cvEndpoint = bucket.websiteEndpoint;
+export const lambdaServerId = lambdaServer.id
