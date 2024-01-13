@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: yarn
-      - run: yarn generate
+      - run: yarn build
 
       - name: Pulumi dependences
         working-directory: ./pulumi
