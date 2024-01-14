@@ -36,7 +36,7 @@
 <script setup>
 const localPath = useLocalePath()
 const { locale } = useI18n()
-const {data: socials} = await useLazyFetch(`/me/social-accounts`, {
+const {data: socials} = await useFetch(`/me/social-accounts`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
 const {data: lysz210} = await useFetch(`/me`, {

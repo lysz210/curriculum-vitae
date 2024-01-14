@@ -48,7 +48,7 @@ defineI18nRoute({
   }
 })
 const { locale } = useI18n()
-const {data: esperienze} = await useLazyFetch(`/me/work-experiences`, {
+const {data: esperienze} = await useFetch(`/me/work-experiences`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>
