@@ -45,7 +45,7 @@
       </v-card-subtitle>
       <v-card-text>
         <v-expansion-panels variant="accordion" multiple>
-          <v-expansion-panel v-for="competenza in skills.body">
+          <v-expansion-panel v-for="competenza in skills">
             <template v-if="competenza.title">
               <v-expansion-panel-title>
                 {{ competenza.title }}
