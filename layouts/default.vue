@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar>
       <v-app-bar-title>
-        {{ $t('anagrafica.nominativo.nome') }} {{ $t('anagrafica.nominativo.cognome') }}
+        {{ lysz210.name }} {{ lysz210.surname }}
       </v-app-bar-title>
       <template v-slot:append>
         <AppLanguageSwitcher /> 
@@ -37,6 +37,9 @@
 const localPath = useLocalePath()
 const { locale } = useI18n()
 const {data: socials} = await useLazyFetch(`/me/social-accounts`, {
+  baseURL: computed(() => `/api/${locale.value}`)
+})
+const {data: lysz210} = await useFetch(`/me`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>

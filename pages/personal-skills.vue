@@ -79,7 +79,7 @@
         {{ $t('competenze.patente.title') }}
       </v-card-subtitle>
       <v-card-title>
-        {{ $t('competenze.patente.content') }}
+        {{ lysz210.drivingLicence }}
       </v-card-title>
     </v-card>
       
@@ -98,6 +98,9 @@ const {data: languages} = await useFetch(`/me/knowledge/languages`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
 const {data: skills} = await useFetch(`/me/knowledge/it-skills`, {
+  baseURL: computed(() => `/api/${locale.value}`)
+})
+const {data: lysz210} = await useFetch(`/me`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>

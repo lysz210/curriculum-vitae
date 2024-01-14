@@ -17,7 +17,6 @@ competenze:
     title: "Competenze informatiche"
   patente:
     title: "Patende di guida"
-    content: "B"
 lavoro:
   title: Esperienze professionali
 istruzione:
@@ -26,7 +25,5 @@ anagrafica:
   title: "Personal information"
   nominativo:
     title: "Nome Cognome"
-    nome: Lingyong
-    cognome: Sun
   socials:
     title: "Contatti social"
