@@ -5,7 +5,7 @@
         {{ $t('competenze.lingue.madre.title') }}
       </v-card-subtitle>
       <v-card-title>
-        {{ $t('competenze.lingue.madre.content') }}
+        {{ languages['mother-tongue'] }}
       </v-card-title>
     </v-card>
     <v-card>
@@ -17,16 +17,16 @@
           <thead>
             <tr>
               <th> </th>
-              <th v-for="(_col, key) in $tm('competenze.lingue.altre.cols')">
+              <th v-for="key in languageKeys">
                 {{ $t(`competenze.lingue.altre.cols.${key}`) }}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(lingua, key) in $tm('competenze.lingue.altre.list')">
-              <td>{{ $t(`competenze.lingue.altre.list.${key}.name`) }}</td>
-              <td v-for="(_col, colKey) in $tm('competenze.lingue.altre.cols')">
-                {{ $t(`competenze.lingue.altre.list.${key}.${colKey}`) }}
+            <tr v-for="lingua in languages.others">
+              <td>{{ lingua.name }}</td>
+              <td v-for="colKey in languageKeys">
+                {{ lingua[colKey] }}
               </td>
             </tr>
           </tbody>
@@ -91,6 +91,11 @@ defineI18nRoute({
   paths: {
     it: '/competenze'
   }
+})
+const { locale, tm } = useI18n()
+const languageKeys = Object.keys(tm('competenze.lingue.altre.cols'))
+const {data: languages} = await useFetch(`/me/knowledge/languages`, {
+  baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>
 

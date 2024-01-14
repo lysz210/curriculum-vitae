@@ -3,19 +3,12 @@ competenze:
   lingue:
     madre:
       title: "Lingua madre"
-      content: "Italiano"
     altre:
         title: "Altre lingue"
         cols: 
           comprensione: "Comprensione"
           parlato: "Parlato"
           scritto: "Scritto"
-        list:
-          inglese:
-            name: "Inglese"
-            comprensione: "B2"
-            parlato: "B2"
-            scritto: "B2"
         footer: >
           Livelli: A1/2 Livello base - B1/2 Livello intermedio - C1/2 Livello avanzato
           <br />
