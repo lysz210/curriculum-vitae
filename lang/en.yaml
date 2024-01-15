@@ -3,96 +3,27 @@ competenze:
   lingue:
     madre:
       title: "Mother tongue"
-      content: "Italian"
     altre:
         title: "Other languages"
         cols: 
           comprensione: "Understanding"
           parlato: "Speaking"
           scritto: "Writing"
-        list:
-          inglese:
-            name: "English"
-            comprensione: "B2"
-            parlato: "B2"
-            scritto: "B2"
         footer: >
           Levels: A1/2: Basic user - B1/2: Independent user - C1/2 Proficient user
           <br />
           Common European Framework of Reference for Languages
   informatiche:
     title: "IT skills"
-    list:
-    - title: "Java 8+"
-      content:
-      - "Intermediate/advanced user"
-      - "Springboot, JPA - Hibernate, Spring batch, PrimeFaces"
-      - "SonarLing"
-      - title: "Testing"
-        content:
-        - "JUnit 5"
-        - "Assertj"
-        - "Contract test with Pact"
-        - "Performance test with Gatling"
-    - title: "JavaScript programming"
-      content:
-      - "Intermediate programmer"
-      - "Good user of Rxjs"
-      - "Basic knowledge of main Front-End framework"
-    - title: "Database"
-      content:
-      - "CouchDB"
-      - "SQL - MySQL, OracleDb, PostgreSQL"
-    - title: "Tools"
-      content:
-      - "Git"
-      - "Jenkins"
-      - "TravisCI"
-      - "Docker - Mirantis"
-      - "Instana"
-      - "Splunk"
-    - title: "PHP Programming"
-      content:
-      - "Advanced user including OOP"
-      - "Composer"
-      - title: "Frameworks"
-        content:
-        - "Laravel"
-        - "Zend Framework (only Mail and DB modules)"
-    - title: "HTML/CSS"
-      content:
-      - "html5"
-      - "SASS/SCSS"
-      - "Stylus"
-      - "Bootstrap"
-    - "Markdown"
-    - "Python"
-    - "Microsoft Office"
   patente:
     title: "Driving licence"
-    content: "B"
 lavoro:
   title: "Work experience"
 istruzione:
   title: "Education"
-  corsi:
-    unive:
-      periodo: "September 2013 – in progress..."
-      istituto: <a href="https://www.unive.it/english" alt="link to Ca Foscari university homepage" target="blank">Ca Foscari</a>
-      corso: <a href="https://www.unive.it/degree/ct3" alt="link al corso di laurea triennale dell'università Ca Foscari" target="blank">Corso di laurea triennale in informatica</a>
-    zuccante:
-      periodo: "October 2009 – June 2013"
-      istituto: <a href="https://www.zuccante.it" alt="link to Zuccante institute in Mestre" target="blank">Itis C. Zuccante</a>
-      corso: <a href="https://www.zuccante.it/corso-serale" alt="link to corso serale di informatica dell&apos; istituto zuccante" target="blank">Corso serale di Informatica</a>
-    pbs:
-      periodo: "February 2008"
-      istituto: <a href="https://www.facebook.com/PBSAcademy-29696457373/timeline/" alt="link to PBS Academy Facebook page" target="blank">PBS Accademy</a>
-      corso: <a href="https://www.facebook.com/PBSAcademy-29696457373/timeline/" alt="ling alla pagina facebook dei corsi di PBS Academy" target="blank">Corso base per la miscelazione di cocktails</a>
 anagrafica:
   title: "Personal information"
   nominativo:
     title: "Name Surname"
-    nome: Lingyong
-    cognome: Sun
   socials:
     title: "Socials"
