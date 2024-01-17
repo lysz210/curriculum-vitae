@@ -42,4 +42,6 @@ const {data: socials} = await useFetch(`/me/social-accounts`, {
 const {data: lysz210} = await useFetch(`/me`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
+
+const content = await queryContent('/i18n/hello').find()
 </script>
