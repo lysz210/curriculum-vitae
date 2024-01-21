@@ -34,6 +34,7 @@
 </template>
 
 <script setup>
+
 const localPath = useLocalePath()
 const { locale } = useI18n()
 const {data: socials} = await useFetch(`/me/social-accounts`, {
@@ -42,6 +43,4 @@ const {data: socials} = await useFetch(`/me/social-accounts`, {
 const {data: lysz210} = await useFetch(`/me`, {
   baseURL: computed(() => `/api/${locale.value}`)
 })
-
-const content = await queryContent('/i18n/hello').find()
 </script>

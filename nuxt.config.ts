@@ -4,6 +4,9 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
+  nitro: {
+    preset: 'aws-lambda'
+  },
   ssr: false,
   devtools: { enabled: true },
   build: {
@@ -41,12 +44,16 @@ export default defineNuxtConfig({
     },
     vueI18n: 'vue-i18n.config.ts'
   },
-  content: {
-    sources: {
-      i18n: {
-        prefix: '/i18n',
-        driver: resolve('./utils/dynamoDbStorage.mjs'),
-      }
-    }
-  }
+  // content: {
+  //   experimental: {
+  //     cacheContents: false 
+  //   },
+  //   sources: {
+  //     i18n: {
+  //       prefix: '/i18n',
+  //       driver: resolve('./utils/dynamoDbStorage.mjs'),
+  //       name: 'i18n'
+  //     }
+  //   }
+  // }
 })
