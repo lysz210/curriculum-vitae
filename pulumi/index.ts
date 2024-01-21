@@ -42,6 +42,7 @@ glob.sync('**/*', {
 }).forEach(file => {
     const filePath = `${dist}${file}`;
     const mimeType = mime.getType(filePath);
+    console.log(">> file ", file, mimeType)
     new aws.s3.BucketObject(file, {
         bucket: bucket.id,
         source: new pulumi.asset.FileAsset(filePath),
