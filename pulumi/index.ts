@@ -57,7 +57,7 @@ zip.writeZip('./server.zip')
 const lambdaServer = new aws.lambda.Function("apiCvLysz210", {
     role: 'arn:aws:iam::843380199157:role/service-role/lambda_basic_execution',
     handler: 'index.handler',
-    runtime: 'nodejs20.x',
+    runtime: aws.lambda.Runtime.NodeJS18dX,
     code: new pulumi.asset.AssetArchive({
         '.': new pulumi.asset.FileArchive('./server.zip')
     })
