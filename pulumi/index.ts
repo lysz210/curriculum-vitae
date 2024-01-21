@@ -2,6 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as glob from 'glob';
 import * as mime from 'mime';
+import * as AdmZip from 'adm-zip'
 
 const configs = new pulumi.Config();
 const PublicRead = aws.s3.CannedAcl.PublicRead;
@@ -49,13 +50,16 @@ glob.sync('**/*', {
     })
 })
 
+const zip = new AdmZip()
+zip.addLocalFolder('../.output/server')
+zip.writeZip('./server.zip')
 // create server lambda
 const lambdaServer = new aws.lambda.Function("apiCvLysz210", {
     role: 'arn:aws:iam::843380199157:role/service-role/lambda_basic_execution',
     handler: 'index.handler',
-    runtime: 'nodejs18.x',
+    runtime: 'nodejs20.x',
     code: new pulumi.asset.AssetArchive({
-        '.': new pulumi.asset.FileArchive('../.output/server')
+        '.': new pulumi.asset.FileArchive('./server.zip')
     })
 })
 // create lambda url

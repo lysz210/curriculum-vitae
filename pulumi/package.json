@@ -2,6 +2,7 @@
     "name": "cv.lysz210.name",
     "main": "index.ts",
     "devDependencies": {
+        "@types/adm-zip": "^0.5.5",
         "@types/md5": "^2.3.2",
         "@types/node": "^16"
     },
@@ -11,6 +12,7 @@
         "@pulumi/pulumi": "^3.0.0",
         "@types/glob": "^8.1.0",
         "@types/mime": "^3.0.4",
+        "adm-zip": "^0.5.10",
         "glob": "^8.1.0",
         "mime": "^3.0.0"
     }
