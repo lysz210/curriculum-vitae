@@ -27,7 +27,6 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.494.0",
     "@aws-sdk/lib-dynamodb": "^3.494.0",
-    "@mdi/font": "^7.4.47",
     "@nuxt/content": "^2.10.0",
     "lodash": "^4.17.21",
     "tslib": "^2.6.2"

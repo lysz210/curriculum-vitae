@@ -1,6 +1,3 @@
-// import this after install '@mdi/font'
-import '@mdi/font/css/materialdesignicons.css'
-
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 
