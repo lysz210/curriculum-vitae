@@ -2,10 +2,10 @@
   <v-card id="istruzione_formazione">
     <v-card-text>
       <v-list>
-        <v-list-item v-for="(_istruzione, istruzioneKey) in $tm('istruzione.corsi')" :key="istruzioneKey">
-          <v-list-item-title v-html="$t(`istruzione.corsi.${istruzioneKey}.istituto`)"></v-list-item-title>
-          <v-list-item-subtitle>{{ $t(`istruzione.corsi.${istruzioneKey}.periodo`) }}</v-list-item-subtitle>
-          <div v-html="$t(`istruzione.corsi.${istruzioneKey}.corso`)"></div>
+        <v-list-item v-for="education in educations">
+          <v-list-item-title v-html="education.istituto"></v-list-item-title>
+          <v-list-item-subtitle>{{ education.periodo }}</v-list-item-subtitle>
+          <div v-html="education.corso"></div>
         </v-list-item>
       </v-list>
     </v-card-text>
@@ -17,5 +17,9 @@ defineI18nRoute({
   paths: {
     it: '/istruzione-formazione'
   }
+})
+const { locale } = useI18n()
+const {data: educations} = await useFetch(`/me/knowledge/education`, {
+  baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>

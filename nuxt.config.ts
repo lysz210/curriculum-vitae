@@ -1,13 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { createResolver } from 'nuxt/kit'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
+const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
+  nitro: {
+    preset: 'aws-lambda'
+  },
   ssr: false,
   devtools: { enabled: true },
   build: {
     transpile: [ 'vuetify' ]
   },
   modules: [
+    '@nuxt/content',
     '@nuxtjs/i18n',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', config => {
@@ -37,5 +43,17 @@ export default defineNuxtConfig({
       strictMessage: false
     },
     vueI18n: 'vue-i18n.config.ts'
-  }
+  },
+  // content: {
+  //   experimental: {
+  //     cacheContents: false 
+  //   },
+  //   sources: {
+  //     i18n: {
+  //       prefix: '/i18n',
+  //       driver: resolve('./utils/dynamoDbStorage.mjs'),
+  //       name: 'i18n'
+  //     }
+  //   }
+  // }
 })

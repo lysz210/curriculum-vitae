@@ -5,7 +5,7 @@
         {{ $t('competenze.lingue.madre.title') }}
       </v-card-subtitle>
       <v-card-title>
-        {{ $t('competenze.lingue.madre.content') }}
+        {{ languages['mother-tongue'] }}
       </v-card-title>
     </v-card>
     <v-card>
@@ -17,16 +17,16 @@
           <thead>
             <tr>
               <th> </th>
-              <th v-for="(_col, key) in $tm('competenze.lingue.altre.cols')">
+              <th v-for="key in languageKeys">
                 {{ $t(`competenze.lingue.altre.cols.${key}`) }}
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(lingua, key) in $tm('competenze.lingue.altre.list')">
-              <td>{{ $t(`competenze.lingue.altre.list.${key}.name`) }}</td>
-              <td v-for="(_col, colKey) in $tm('competenze.lingue.altre.cols')">
-                {{ $t(`competenze.lingue.altre.list.${key}.${colKey}`) }}
+            <tr v-for="lingua in languages.others">
+              <td>{{ lingua.name }}</td>
+              <td v-for="colKey in languageKeys">
+                {{ lingua[colKey] }}
               </td>
             </tr>
           </tbody>
@@ -45,30 +45,30 @@
       </v-card-subtitle>
       <v-card-text>
         <v-expansion-panels variant="accordion" multiple>
-          <v-expansion-panel v-for="(competenza, key) in $tm('competenze.informatiche.list')">
+          <v-expansion-panel v-for="competenza in skills">
             <template v-if="competenza.title">
               <v-expansion-panel-title>
-                {{ $t(`competenze.informatiche.list.${key}.title`) }}
+                {{ competenza.title }}
               </v-expansion-panel-title>
               <v-expansion-panel-text>
                 <v-list v-if="competenza.content" density="compact">
-                  <v-list-item v-for="(skill, skillKey) in $tm(`competenze.informatiche.list.${key}.content`)">
+                  <v-list-item v-for="(skill, skillKey) in competenza.content">
                     <template v-if="skill.title">
                       <v-list-item-title>
-                        {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.title`) }}
+                        {{ skill.title }}
                       </v-list-item-title>
                       <v-list-item-subtitle v-if="skill.content">
-                        <span v-for="(_, contentKey) in $tm(`competenze.informatiche.list.${key}.content.${skillKey}.content`)" class="sub-skill">
-                          {{ $t(`competenze.informatiche.list.${key}.content.${skillKey}.content.${contentKey}`) }}
+                        <span v-for="subSkill in skill.content" class="sub-skill">
+                          {{ subSkill }}
                         </span>
                       </v-list-item-subtitle>
                     </template>
-                    <v-list-item-title v-else>{{ $t(`competenze.informatiche.list.${key}.content.${skillKey}`) }}</v-list-item-title>
+                    <v-list-item-title v-else>{{ skill }}</v-list-item-title>
                   </v-list-item>
                 </v-list>
               </v-expansion-panel-text>
             </template>
-            <v-expansion-panel-title v-else>{{ $t(`competenze.informatiche.list.${key}`) }}</v-expansion-panel-title>
+            <v-expansion-panel-title v-else>{{ competenza }}</v-expansion-panel-title>
           </v-expansion-panel>
         </v-expansion-panels>
       </v-card-text>
@@ -79,7 +79,7 @@
         {{ $t('competenze.patente.title') }}
       </v-card-subtitle>
       <v-card-title>
-        {{ $t('competenze.patente.content') }}
+        {{ lysz210.drivingLicence }}
       </v-card-title>
     </v-card>
       
@@ -91,6 +91,17 @@ defineI18nRoute({
   paths: {
     it: '/competenze'
   }
+})
+const { locale, tm } = useI18n()
+const languageKeys = Object.keys(tm('competenze.lingue.altre.cols'))
+const {data: languages} = await useFetch(`/me/knowledge/languages`, {
+  baseURL: computed(() => `/api/${locale.value}`)
+})
+const {data: skills} = await useFetch(`/me/knowledge/it-skills`, {
+  baseURL: computed(() => `/api/${locale.value}`)
+})
+const {data: lysz210} = await useFetch(`/me`, {
+  baseURL: computed(() => `/api/${locale.value}`)
 })
 </script>
 

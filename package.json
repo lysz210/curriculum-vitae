@@ -10,8 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0",
+    "@types/lodash": "^4.14.202",
     "nuxt": "^3.8.2",
     "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.3.12",
@@ -19,7 +25,17 @@
     "vuetify": "^3.4.9"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.494.0",
+    "@aws-sdk/lib-dynamodb": "^3.494.0",
     "@mdi/font": "^7.4.47",
-    "micromark": "^4.0.0"
+    "@nuxt/content": "^2.10.0",
+    "lodash": "^4.17.21",
+    "tslib": "^2.6.2"
+  },
+  "exports": {
+    "./serverContent": {
+      "types": "./node_modules/@nuxt/content/dist/runtime/server/index.d.ts",
+      "import": "./node_modules/@nuxt/content/dist/runtime/server/index.js"
+    }
   }
 }
