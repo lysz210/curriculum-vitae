@@ -44,16 +44,16 @@ export default defineNuxtConfig({
     },
     vueI18n: 'vue-i18n.config.ts'
   },
-  // content: {
-  //   experimental: {
-  //     cacheContents: false 
-  //   },
-  //   sources: {
-  //     i18n: {
-  //       prefix: '/i18n',
-  //       driver: resolve('./utils/dynamoDbStorage.mjs'),
-  //       name: 'i18n'
-  //     }
-  //   }
-  // }
+  content: {
+    experimental: {
+      cacheContents: false 
+    },
+    sources: {
+      i18n: {
+        prefix: '/i18n',
+        driver: resolve('./utils/dynamo-db-driver.mjs'),
+        name: 'i18n'
+      }
+    }
+  }
 })
