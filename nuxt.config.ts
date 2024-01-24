@@ -45,9 +45,9 @@ export default defineNuxtConfig({
     vueI18n: 'vue-i18n.config.ts'
   },
   content: {
-    experimental: {
-      cacheContents: false 
-    },
+    // experimental: {
+    //   cacheContents: false 
+    // },
     sources: {
       i18n: {
         prefix: '/i18n',
