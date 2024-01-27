@@ -27,14 +27,8 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.494.0",
     "@aws-sdk/lib-dynamodb": "^3.494.0",
-    "@nuxt/content": "npm:@nuxt/content-edge@latest",
     "lodash": "^4.17.21",
-    "luxon": "^3.4.4"
-  },
-  "exports": {
-    "./serverContent": {
-      "types": "./node_modules/@nuxt/content/dist/runtime/server/index.d.ts",
-      "import": "./node_modules/@nuxt/content/dist/runtime/server/index.js"
-    }
+    "luxon": "^3.4.4",
+    "unstorage": "^1.10.1"
   }
 }

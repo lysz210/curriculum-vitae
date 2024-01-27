@@ -1,4 +1,10 @@
-import { serverQueryContent } from '#content/server'
-export default defineEventHandler(event => serverQueryContent(event, `/lang/${getRouterParam(event, 'lang')}/me`)
-  .without(["_path","_dir","_draft","_partial","_locale","_id","_type","_source","_file","_extension"])
-  .findOne())
+export default defineEventHandler( async (event) => {
+  const i18nStorage = useStorage('i18n')
+  return i18nStorage.getItem(`${getRouterParam(event, 'lang')}:me:index.yaml`)
+  .then(response => {
+    if (Array.isArray(response)) {
+      return response[0]
+    }
+    return response || null
+  })
+})
