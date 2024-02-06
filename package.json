@@ -18,6 +18,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0",
     "@types/lodash": "^4.14.202",
+    "@types/luxon": "^3.4.2",
     "nuxt": "^3.8.2",
     "vite-plugin-vuetify": "^2.0.1",
     "vue": "^3.3.12",
@@ -29,6 +30,7 @@
     "@aws-sdk/lib-dynamodb": "^3.494.0",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
+    "puppeteer": "^22.0.0",
     "unstorage": "^1.10.1"
   }
 }
