@@ -8,7 +8,6 @@ import type { S } from 'unstorage/dist/shared/unstorage.745f9650';
 const DRIVER_NAME = "dynamodb";
 
 export default defineDriver((opts: any) => {
-  console.log('>>>>>>> >>>>>> hello world <<<<<<<<')
   let docClient: DynamoDBDocumentClient;
   const client = () => {
     if (!docClient) {
@@ -49,14 +48,12 @@ export default defineDriver((opts: any) => {
     },
   }
   const keyParser = (key: string) => {
-    console.log('keyparser', key)
     const groups = /^(?<locale>\w+)(?<fullpath>:[\w:\-.]*\$?)$/.exec(key)?.groups
     if (!groups) {
       throw new Error('invalid key')
     }
     const locale = groups.locale
     const fullpath = groups.fullpath
-    console.log(">>>> parsekey", locale, fullpath)
     return {
       locale, 'fullpath': fullpath.replaceAll(':', '/')
     }
@@ -64,9 +61,7 @@ export default defineDriver((opts: any) => {
   const keyBuilder = (index: any) => `/${index.locale.S}${index.fullpath.S}`
   const parseToJSDate = (timestamp: string) => DateTime.fromISO(timestamp).toJSDate()
   const _getMeta = (key: string) => {
-    console.log('>>>>>>> _getMeta', key)
     const { locale, fullpath } = keyParser(key)
-    console.log(fullpath, typeof fullpath)
     return client().send(cmd.getIndex('metas-index', locale, fullpath))
       .then(response => response?.Item)
       .then(meta => {
@@ -79,9 +74,7 @@ export default defineDriver((opts: any) => {
     name: DRIVER_NAME,
     options: opts,
     async hasItem(key) {
-      console.log('>>>>>>> hasItem', key)
       const { locale, fullpath } = keyParser(key)
-      console.log(fullpath, typeof fullpath)
       return await client().send(cmd.getIndex(KEYS_INDEX_NAME, locale, fullpath))
         .then(response => response?.Item ? true : false)
     },
@@ -89,7 +82,6 @@ export default defineDriver((opts: any) => {
       if (key.endsWith('$')) {
         return _getMeta(_.trimEnd(key, '$'))
       }
-      console.log('>>>>>>> getItem', key)
       const { locale, fullpath: pathPrefix } = keyParser(key)
       const result = await client().send(new QueryCommand({
         ...TPL_COMMAND,
@@ -104,7 +96,6 @@ export default defineDriver((opts: any) => {
       return result.Items
     },
     async getKeys() {
-      console.log('>>>>>>> getKeys')
       try {
         const response = await client().send(cmd.scanIndex(KEYS_INDEX_NAME))
         return response?.Items?.map(keyBuilder) || []
@@ -113,7 +104,6 @@ export default defineDriver((opts: any) => {
       }
     },
     async getMeta(key) {
-      console.log('>>>>>>> getMeta', key)
       return _getMeta(key)
     }
   };

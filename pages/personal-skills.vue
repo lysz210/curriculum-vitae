@@ -79,7 +79,7 @@
         {{ $t('competenze.patente.title') }}
       </v-card-subtitle>
       <v-card-title>
-        {{ lysz210.drivingLicence }}
+        {{ personalData.drivingLicence }}
       </v-card-title>
     </v-card>
       
@@ -94,15 +94,13 @@ defineI18nRoute({
 })
 const { locale, tm } = useI18n()
 const languageKeys = Object.keys(tm('competenze.lingue.altre.cols'))
-const {data: languages} = await useFetch(`/me/knowledge/languages`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
-const {data: skills} = await useFetch(`/me/knowledge/it-skills`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
-const {data: lysz210} = await useFetch(`/me`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
+
+
+const {
+  languages,
+  skills,
+  personalData
+} = storeToRefs(useMeStore())
 </script>
 
 <style>
