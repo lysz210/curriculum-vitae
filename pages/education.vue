@@ -18,8 +18,7 @@ defineI18nRoute({
     it: '/istruzione-formazione'
   }
 })
-const { locale } = useI18n()
-const {data: educations} = await useFetch(`/me/knowledge/education`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
+const {
+  educations
+} = storeToRefs(useMeStore())
 </script>
