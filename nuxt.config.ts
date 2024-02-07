@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     transpile: [ 'vuetify' ]
   },
   modules: [
+    '@pinia/nuxt',
     '@nuxtjs/i18n',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', config => {
