@@ -1,4 +1,6 @@
 <script setup>
 const localePath = useLocalePath()
-await navigateTo(localePath({ name: 'experience' }))
+onMounted(() => {
+    navigateTo(localePath({ name: 'experience' }))
+})
 </script>

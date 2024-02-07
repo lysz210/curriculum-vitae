@@ -1,6 +1,4 @@
 import { defineStore } from "pinia";
-import workExperiences from "~/server/api/[lang]/me/work-experiences";
-
 
 export const useMeStore = defineStore('me', () => {
     const { locale } = useI18n()
