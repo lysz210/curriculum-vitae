@@ -4,7 +4,7 @@
       <v-timeline
         side="end"
       >
-        <v-timeline-item dot-color="blue" v-for="esperienza in esperienze">
+        <v-timeline-item dot-color="blue" v-for="esperienza in workExperiences">
           <template v-slot:opposite v-if="!mobile">
             <v-card variant="flat">
               <v-card-subtitle>
@@ -47,8 +47,8 @@ defineI18nRoute({
     it: '/esperienze-lavorative'
   }
 })
-const { locale } = useI18n()
-const {data: esperienze} = await useFetch(`/me/work-experiences`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
+
+const {
+  workExperiences
+} = storeToRefs(useMeStore())
 </script>

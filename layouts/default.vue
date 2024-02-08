@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar>
       <v-app-bar-title>
-        {{ lysz210.name }} {{ lysz210.surname }}
+        {{ personalData.name }} {{ personalData.surname }}
       </v-app-bar-title>
       <template v-slot:append>
         <AppLanguageSwitcher /> 
@@ -34,13 +34,9 @@
 </template>
 
 <script setup>
-
 const localPath = useLocalePath()
-const { locale } = useI18n()
-const {data: socials} = await useFetch(`/me/social-accounts`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
-const {data: lysz210} = await useFetch(`/me`, {
-  baseURL: computed(() => `/api/${locale.value}`)
-})
+const {
+  socials,
+  personalData
+} = storeToRefs(useMeStore())
 </script>
