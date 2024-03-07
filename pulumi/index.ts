@@ -60,7 +60,8 @@ const lambdaServer = new aws.lambda.Function("apiCvLysz210", {
     runtime: aws.lambda.Runtime.NodeJS20dX,
     code: new pulumi.asset.AssetArchive({
         '.': new pulumi.asset.FileArchive('./server.zip')
-    })
+    }),
+    timeout: 30
 })
 // create lambda url
 const lambdaServerUrl = new aws.lambda.FunctionUrl("apiCvLysz210Url", {
@@ -79,7 +80,7 @@ const lambdaServerUrl = new aws.lambda.FunctionUrl("apiCvLysz210Url", {
             "date",
         ],
         maxAge: 86400,
-    }
+    },
 })
 
 // Export the name of the bucket
