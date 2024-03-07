@@ -1,10 +1,14 @@
+import { load } from 'js-yaml'
+import { of, map, mergeMap, firstValueFrom } from 'rxjs'
+
 export default defineEventHandler( async (event) => {
   const i18nStorage = useStorage('i18n')
-  return i18nStorage.getItem(`${getRouterParam(event, 'lang')}:me:knowledge:languages:`)
-  .then(response => {
-    if (Array.isArray(response)) {
-      return response[0]
-    }
-    return response || null
-  })
+  const response$ = of(getRouterParam(event, 'lang'))
+    .pipe(
+      map(lang => `${lang}:me:knowledge:languages.yaml`),
+      mergeMap(key => i18nStorage.getItem(key)),
+      map(item => item as string),
+      map(item => load(item))
+    )
+  return firstValueFrom(response$)
 })
