@@ -1,7 +1,6 @@
 import { load } from 'js-yaml'
 import { from, filter, firstValueFrom, map, mergeMap, toArray } from 'rxjs'
 import _ from 'lodash'
-import { useFetch } from 'nuxt/app'
 
 export default defineEventHandler( async (_event) => {
   const profileURL = 'https://lysz210.github.io/profile'
