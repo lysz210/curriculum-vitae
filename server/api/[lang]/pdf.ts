@@ -10,5 +10,5 @@ export default defineEventHandler( async (event) => {
         'Content-Disposition',
         `attachment; filename=${filename}`
     )
-    return $fetch('cv.pdf', { baseURL: profileURL })
+    return $fetch('cv.pdf', { baseURL: profileURL, responseType: 'blob' })
 })
