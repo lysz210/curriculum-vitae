@@ -4,14 +4,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   nitro: {
     preset: 'aws-lambda',
-    storage: {
-      i18n: {
-        driver: 'github',
-        repo: 'lysz210/profile',
-        branch: 'gh-pages',
-        dir: 'i18n'
-      }
-    }
   },
   ssr: false,
   devtools: { enabled: true },
