@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { load } from 'js-yaml'
 
 import { from, filter, map, mergeMap, toArray, of, groupBy, zip } from 'rxjs'
 import _ from 'lodash'
@@ -48,12 +47,11 @@ export const useMeStore = defineStore('me', () => {
         const profile$ = from(useFetch('mix-manifest.json', { baseURL: profileURL })).pipe(
             map(response => response?.data?.value),
             mergeMap((manifest: any) => (Object.values(manifest) as string[])),
-            filter(path => /.*\.yaml$/.test(path)),
+            filter(path => /.*\.json$/.test(path)),
             mergeMap(path => zip(
                 of(mapKey(path)),
                 from(useFetch(path, { baseURL: profileURL })).pipe(
-                    map(response => (response?.data?.value as string)),
-                    map(yaml => load(yaml))
+                    map(response => (response?.data?.value)),
                 )
             )),
             groupBy(

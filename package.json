@@ -17,7 +17,6 @@
     "@fortawesome/vue-fontawesome": "^3.0.5",
     "@nuxt/devtools": "latest",
     "@nuxtjs/i18n": "^8.0.0",
-    "@types/js-yaml": "^4.0.9",
     "@types/lodash": "^4.14.202",
     "@types/luxon": "^3.4.2",
     "nuxt": "^3.8.2",
@@ -28,7 +27,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
-    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "luxon": "^3.4.4",
     "pinia": "^2.1.7",
