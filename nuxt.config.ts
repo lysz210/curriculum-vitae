@@ -5,11 +5,14 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'aws-lambda',
   },
+
   ssr: false,
   devtools: { enabled: true },
+
   build: {
     transpile: [ 'vuetify' ]
   },
+
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
@@ -20,6 +23,7 @@ export default defineNuxtConfig({
       })
     }
   ],
+
   vite: {
     vue: {
       template: {
@@ -27,6 +31,7 @@ export default defineNuxtConfig({
       }
     }
   },
+
   i18n: {
     lazy: true,
     langDir: 'lang',
@@ -41,5 +46,7 @@ export default defineNuxtConfig({
       strictMessage: false
     },
     vueI18n: 'vue-i18n.config.ts'
-  }
+  },
+
+  compatibilityDate: '2024-12-30'
 })
