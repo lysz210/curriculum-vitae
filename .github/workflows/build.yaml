@@ -20,7 +20,7 @@ jobs:
       - name: Pulumi dependences
         working-directory: ./pulumi
         run: npm ci
-      - uses: pulumi/actions@v4
+      - uses: pulumi/actions@v6
         with:
           command: up
           stack-name: lysz210/cv.lysz210.name/dev
