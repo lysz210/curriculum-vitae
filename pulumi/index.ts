@@ -1,7 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import * as glob from 'glob';
-import * as mime from 'mime';
+import { glob } from 'glob';
+import mime from 'mime';
 import * as AdmZip from 'adm-zip'
 
 const configs = new pulumi.Config();
@@ -11,19 +11,6 @@ const PublicRead = aws.s3.CannedAcl.PublicRead;
 const bucket = new aws.s3.Bucket("cv.lysz210.name", {
     bucket: 'cv.lysz210.name',
     acl: PublicRead,
-    website: {
-        indexDocument: "index.html",
-        routingRules: [
-            {
-                Condition: {
-                    HttpErrorCodeReturnedEquals: '404'
-                },
-                Redirect: {
-                    ReplaceKeyWith: 'en'
-                }
-            }
-        ]
-    },
     corsRules: [
         {
             allowedMethods: ['GET'],
@@ -31,6 +18,22 @@ const bucket = new aws.s3.Bucket("cv.lysz210.name", {
         }
     ]
 });
+
+const websiteConfiguration = new aws.s3.BucketWebsiteConfiguration("cv.lysz210.name-websiteConfiguration", {
+    bucket: bucket.id,    
+    indexDocument: {suffix: "index.html"},
+        routingRules: [
+            {
+                condition: {
+                    httpErrorCodeReturnedEquals: '404'
+                },
+                redirect: {
+                    replaceKeyWith: 'en'
+                }
+            }
+        ]
+    }
+)
 
 // load all files
 const dist = '../.output/public/';
@@ -57,7 +60,7 @@ zip.writeZip('./server.zip')
 const lambdaServer = new aws.lambda.Function("apiCvLysz210", {
     role: 'arn:aws:iam::843380199157:role/service-role/lambda_basic_execution',
     handler: 'index.handler',
-    runtime: aws.lambda.Runtime.NodeJS20dX,
+    runtime: "nodejs24.x",
     code: new pulumi.asset.AssetArchive({
         '.': new pulumi.asset.FileArchive('./server.zip')
     }),
@@ -85,5 +88,5 @@ const lambdaServerUrl = new aws.lambda.FunctionUrl("apiCvLysz210Url", {
 
 // Export the name of the bucket
 export const bucketName = bucket.id;
-export const cvEndpoint = bucket.websiteEndpoint;
+export const cvEndpoint = websiteConfiguration.websiteEndpoint;
 export const lambdaServerId = lambdaServer.id

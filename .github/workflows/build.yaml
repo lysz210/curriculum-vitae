@@ -13,7 +13,7 @@ jobs:
       - name: Compile assets
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: '24.x'
       - run: npm ci
       - run: npm run build
 
