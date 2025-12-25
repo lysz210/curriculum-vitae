@@ -9,8 +9,16 @@ const PublicRead = aws.s3.CannedAcl.PublicRead;
 
 // Create an AWS resource (S3 Bucket)
 const bucket = new aws.s3.Bucket("cv.lysz210.name", {
-    bucket: 'cv.lysz210.name',
-    acl: PublicRead,
+    bucket: 'cv.lysz210.name'
+});
+
+const bucketAcl = new aws.s3.BucketAcl("cv.lysz210.name-bucketAcl", {
+    bucket: bucket.id,
+    acl: PublicRead
+});
+
+const corsConfiguration = new aws.s3.BucketCorsConfiguration("cv.lysz210.name-corsConfiguration", {
+    bucket: bucket.id,
     corsRules: [
         {
             allowedMethods: ['GET'],
