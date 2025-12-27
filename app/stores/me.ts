@@ -42,7 +42,6 @@ export const useMeStore = defineStore('me', () => {
     }
 
     const fetchAll = async (paths: string[]) => {
-        console.log('fetchAll', paths)
         return Promise.all(
             paths.map(path => 
                 useFetch(path, { baseURL: profileURL }).then(response => response?.data?.value)
