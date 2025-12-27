@@ -1,19 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
 export default defineNuxtConfig({
-  nitro: {
-    preset: 'aws-lambda',
-  },
-
-  ssr: false,
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
-  build: {
-    transpile: [ 'vuetify' ]
+  experimental: {
+    inlineRouteRules: true
   },
-
   modules: [
+    '@nuxt/hints',
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     (_options, nuxt) => {
@@ -23,6 +17,13 @@ export default defineNuxtConfig({
       })
     }
   ],
+
+  nitro: {
+    preset: 'aws-lambda',
+  },
+  build: {
+    transpile: [ 'vuetify' ]
+  },
 
   vite: {
     vue: {
@@ -47,6 +48,4 @@ export default defineNuxtConfig({
     },
     vueI18n: 'vue-i18n.config.ts'
   },
-
-  compatibilityDate: '2024-12-30'
 })
