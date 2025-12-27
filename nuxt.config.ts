@@ -3,9 +3,6 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  experimental: {
-    inlineRouteRules: true
-  },
   modules: [
     '@nuxt/hints',
     '@pinia/nuxt',
@@ -17,9 +14,10 @@ export default defineNuxtConfig({
       })
     }
   ],
-
+  ssr: false,
   nitro: {
     preset: 'aws-lambda',
+    serveStatic: true
   },
   build: {
     transpile: [ 'vuetify' ]
@@ -34,7 +32,6 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    lazy: true,
     langDir: 'lang',
     customRoutes: 'page',
     locales: [
