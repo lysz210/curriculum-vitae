@@ -4,7 +4,7 @@
       <v-app-bar-title>
         {{ personalData.name }} {{ personalData.surname }}
       </v-app-bar-title>
-      <template v-slot:append>
+      <template v-if="isMainApp" v-slot:append>
         <AppLanguageSwitcher /> 
       </template>
       <template v-slot:extension>
@@ -16,7 +16,7 @@
       </template>
     </v-app-bar>
     <v-main>
-      <v-container id="informazioni_personali">
+      <v-container v-if="isMainApp">
         <v-chip
         v-for="social of socials"
         :href="social.url"
@@ -39,4 +39,5 @@ const {
   socials,
   personalData
 } = storeToRefs(useMeStore())
+const isMainApp = window.self === window.top
 </script>
