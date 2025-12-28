@@ -6,13 +6,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/hints',
     '@pinia/nuxt',
-    '@nuxtjs/i18n',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', config => {
-        // @ts-expect-error
-        config.plugins?.push(vuetify({ autoImport: true }))
-      })
-    }
+    '@nuxtjs/i18n'
   ],
   ssr: false,
   nitro: {
@@ -24,6 +18,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    plugins: [vuetify({ autoImport: true })],
     vue: {
       template: {
         transformAssetUrls
